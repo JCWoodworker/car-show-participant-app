@@ -14,7 +14,6 @@ votesRouter.get('/', async (req, res) => {
         return await VoteSerializer.getSummary(vote)
       })
     )
-    debugger
     return res.status(200).json({ serializedVotes })
   } catch (error) {
     return res.status(500).json({ errors: error })
