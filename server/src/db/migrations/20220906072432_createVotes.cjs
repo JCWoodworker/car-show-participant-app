@@ -18,6 +18,8 @@ exports.up = async (knex) => {
       table.integer("secondPlace").notNullable()
       table.integer("thirdPlace").notNullable()
       table.bigInteger("userId")
+      table.bigInteger("pollId")
+        .unique()
         .notNullable()
         .unsigned()
         .index()
