@@ -1,11 +1,5 @@
 const Model = require("./Model")
-const unique = require("objection-unique")
-
-const uniqueFunc = unique({ 
-  fields: ["userId"], 
-  identifiers: ["id"] 
-})
-class Vote extends uniqueFunc(Model) {
+class Vote extends Model {
   static get tableName() {
     return "votes"
   }
