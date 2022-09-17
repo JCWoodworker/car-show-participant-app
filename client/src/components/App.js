@@ -9,7 +9,7 @@ import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 
 import UserInfo1 from "./UserInfo1";
-export const myFuckingContext = createContext();
+export const userContext = createContext();
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -32,10 +32,10 @@ const App = (props) => {
       <TopBar user={currentUser} />
       <Switch>
         <Route exact path="/">
-      <myFuckingContext.Provider value={currentUser}>
-          <h2>Welcome to the voting app!!</h2>
-          <UserInfo1 />
-      </myFuckingContext.Provider>
+          <userContext.Provider value={currentUser}>
+            <h2>Car Show Participant App</h2>
+            <UserInfo1 />
+          </userContext.Provider>
         </Route>
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />

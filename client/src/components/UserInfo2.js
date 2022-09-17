@@ -1,17 +1,22 @@
 import React, { useContext } from "react"
-import { myFuckingContext } from "./App"
+import { userContext } from "./App"
 
 const UserInfo2 = (props) => {
-  const currentUser = useContext(myFuckingContext)
+  const currentUser = useContext(userContext)
 
-  let userInfo = `You aren't logged in`
+  let userInfo = `----- You aren't logged in -----`
   if (currentUser) {
-    userInfo = `Current user is: ${currentUser.id}`
+    userInfo = (
+      <div>
+        <p>----- Current user is: {currentUser.id}</p>
+        <p>----- User name is: {currentUser.firstName}</p>
+      </div>
+    )
+      
   }
   
   return (
     <>
-      <h3>This is the second page of user info</h3>
       <p>{userInfo}</p>
       </>
   )

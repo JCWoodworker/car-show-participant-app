@@ -5,18 +5,22 @@ class UserSeeder {
     const userData = [
       {
         email: "user1@test.com",
+        firstName: "User1",
         cryptedPassword: "$2b$10$1mZuD.3ac8rDukajr54TzeyQXriKC7berLu/nOuu4MKzQ10heRfn6",
       },
       {
         email: "user2@test.com",
+        firstName: "User2",
         cryptedPassword: "$2b$10$1mZuD.3ac8rDukajr54TzeyQXriKC7berLu/nOuu4MKzQ10heRfn6",
       },
       {
         email: "user3@test.com",
+        firstName: "User3",
         cryptedPassword: "$2b$10$1mZuD.3ac8rDukajr54TzeyQXriKC7berLu/nOuu4MKzQ10heRfn6",
       },
       {
         email: "user4@test.com",
+        firstName: "User4",
         cryptedPassword: "$2b$10$1mZuD.3ac8rDukajr54TzeyQXriKC7berLu/nOuu4MKzQ10heRfn6",
       }
     ]
