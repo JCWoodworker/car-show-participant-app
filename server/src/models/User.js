@@ -25,8 +25,10 @@ class User extends uniqueFunc(Model) {
 
   static get relationMappings() {
     const Vote = require("./Vote")
+    const Car = require("./Car")
 
     return {
+
       votes: {
         relation: Model.HasManyRelation,
         modelClass: Vote,
@@ -35,8 +37,15 @@ class User extends uniqueFunc(Model) {
           to: "votes.userId",
         },
       },
+      cars: {
+        relation: Model.HasManyRelation,
+        modelClass: Car,
+        join: {
+          from: "users.id",
+          to: "cars.userId",
+        },
+      }
     }
-    
   }
 
   static get jsonSchema() {
