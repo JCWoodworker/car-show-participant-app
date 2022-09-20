@@ -1,24 +1,43 @@
-import React, { useContext } from "react"
-import { userContext } from "./App"
+import React, { useContext, useEffect, useState } from "react"
+import axios from 'axios'
 
 const CarInfo = (props) => {
-  const currentUser = useContext(userContext)
+  const [carData, setCarData] = useState([{
+    id: "",
+    year: "",
+    make: "",
+    model: "",
+  }])
 
-  let carInfo = `----- You aren't logged in -----`
-  if (currentUser) {
-    carInfo = (
-      <div>
-        <p>----- Current user is: {currentUser.id}</p>
-        <p>----- User name is: {currentUser.firstName}</p>
+  const fetchCarData = async () => {
+    try {
+      const response = await axios(`/api/v1/cars`)
+      setCarData(response.data.cars)
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
+  useEffect(() => {
+    fetchCarData()  
+  }, [])
+
+  let carInformation = null
+  carData ?
+    carInformation = (
+      <div className="car-info">
+        <p>Year: {carData[0].year}</p>
+        <p>Make: {carData[0].make}</p>
+        <p>Model: {carData[0].model}</p>
       </div>
     )
-      
-  }
-  
+    : carInformation = null
+
   return (
     <>
-      <p>{carInfo}</p>
-      </>
+      <h3>Your Car</h3>
+      {carInformation}
+    </>
   )
 }
 

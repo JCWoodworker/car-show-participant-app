@@ -8,7 +8,7 @@ import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 
-import UserInfo1 from "./UserInfo1";
+import UserHome from "./UserHome";
 export const userContext = createContext();
 
 const App = (props) => {
@@ -30,12 +30,14 @@ const App = (props) => {
   return (
     <Router>
       <TopBar user={currentUser} />
+        <div className="main-title">
+          <h2>Car Show Participant App</h2>
+        </div>
       <Switch>
         <div className="main-page-container">
           <Route exact path="/">
             <userContext.Provider value={currentUser}>
-                <h2>Car Show Participant App</h2>
-                <UserInfo1 />
+              <UserHome />
             </userContext.Provider>
           </Route>
           <Route exact path="/users/new" component={RegistrationForm} />
