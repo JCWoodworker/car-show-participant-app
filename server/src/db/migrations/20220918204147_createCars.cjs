@@ -22,6 +22,7 @@ exports.up = async (knex) => {
         .unsigned()
         .index()
         .references("users.id")
+        .onDelete("CASCADE")
       table.timestamp("createdAt")
         .notNullable()
         .defaultTo(knex.fn.now())

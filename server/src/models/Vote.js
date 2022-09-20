@@ -1,11 +1,11 @@
-const Model = require("./Model")
+const Model = require("./Model.js")
 class Vote extends Model {
   static get tableName() {
     return "votes"
   }
 
   static get relationMappings() {
-    const User = require("./User")
+    const User = require("./User.js")
 
     return {
       user: {
@@ -29,7 +29,7 @@ class Vote extends Model {
         firstPlace: {type: "integer"},
         secondPlace: {type: "integer"},
         thirdPlace: {type: "integer"},
-        userId: {type: "integer"}
+        userId: { type: ['integer', 'string'] },
       }
     }
 

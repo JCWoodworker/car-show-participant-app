@@ -1,11 +1,11 @@
-const Model = require("./Model")
+const Model = require("./Model.js")
 class Car extends Model {
   static get tableName() {
     return "cars"
   }
 
   static get relationMappings() {
-    const User = require("./User")
+    const User = require("./User.js")
 
     return {
       user: {
@@ -29,7 +29,7 @@ class Car extends Model {
         firstPlace: {type: "integer"},
         secondPlace: {type: "string"},
         thirdPlace: {type: "string"},
-        userId: {type: "integer"}
+        userId: { type: ['integer', 'string'] },
       }
     }
 
