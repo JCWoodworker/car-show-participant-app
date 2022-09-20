@@ -1,12 +1,12 @@
 import React, { useContext } from "react"
 import { userContext } from "./App"
 
-const UserInfo2 = (props) => {
+const CarInfo = (props) => {
   const currentUser = useContext(userContext)
 
-  let userInfo = `----- You aren't logged in -----`
+  let carInfo = `----- You aren't logged in -----`
   if (currentUser) {
-    userInfo = (
+    carInfo = (
       <div>
         <p>----- Current user is: {currentUser.id}</p>
         <p>----- User name is: {currentUser.firstName}</p>
@@ -17,9 +17,9 @@ const UserInfo2 = (props) => {
   
   return (
     <>
-      <p>{userInfo}</p>
+      <p>{carInfo}</p>
       </>
   )
 }
 
-export default UserInfo2
+export default CarInfo

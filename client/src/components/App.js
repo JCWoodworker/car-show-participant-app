@@ -31,14 +31,16 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-        <Route exact path="/">
-          <userContext.Provider value={currentUser}>
-            <h2>Car Show Participant App</h2>
-            <UserInfo1 />
-          </userContext.Provider>
-        </Route>
-        <Route exact path="/users/new" component={RegistrationForm} />
-        <Route exact path="/user-sessions/new" component={SignInForm} />
+        <div className="main-page-container">
+          <Route exact path="/">
+            <userContext.Provider value={currentUser}>
+                <h2>Car Show Participant App</h2>
+                <UserInfo1 />
+            </userContext.Provider>
+          </Route>
+          <Route exact path="/users/new" component={RegistrationForm} />
+          <Route exact path="/user-sessions/new" component={SignInForm} />
+        </div>
       </Switch>
     </Router>
   );
