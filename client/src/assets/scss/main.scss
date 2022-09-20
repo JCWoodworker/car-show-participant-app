@@ -19,6 +19,15 @@ a {
   color: white;
 }
 
+.main-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
 .main-page-container {
   display: flex;
   flex-flow: column;
@@ -32,16 +41,34 @@ a {
   padding: 1rem;
 }
 
+.main-page-container-child-1 {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: rgb(128, 128, 128);
+  color: white;
+}
+
+.car-info {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: rgb(128, 128, 128);
+  color: white;
+}
+
 .top-bar {
   display: flex;
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem auto;
+  margin: 0 auto;
   background-color: rgb(93, 93, 93);
   color: white;
-  max-width: 80%;
-  border-radius: 5px;
   padding: 1.5rem
 }
 
