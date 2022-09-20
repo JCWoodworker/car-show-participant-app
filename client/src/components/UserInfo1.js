@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import UserInfo2 from "./UserInfo2"
+import CarInfo from "./CarInfo"
 import { userContext } from "./App"
 
 const UserInfo1 = (props) => {
@@ -12,7 +12,7 @@ const UserInfo1 = (props) => {
   return (
     <>
       {message}
-      <UserInfo2 />
+      <CarInfo />
     </>
   )
 }
