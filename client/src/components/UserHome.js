@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import CarInfo from "./CarInfo"
+import CarIndex from "./CarIndex"
 import { userContext } from "./App"
 
 const UserHome = (props) => {
@@ -8,7 +8,7 @@ const UserHome = (props) => {
   currentUser ? message =
     <div className="main-page-container-child-1">
       <h2>Welcome {currentUser.firstName}!</h2>
-      <CarInfo />
+      <CarIndex />
     </div>
     : message = "Please sign in or register"
 
