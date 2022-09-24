@@ -1,0 +1,33 @@
+.car-info {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 1rem;
+  background-color: $dark-gray;
+  border-radius: 5px;
+  color: white;
+  padding: 1rem
+}
+.car-info p {
+  margin: 0.5px;
+  padding: 0.5px;
+}
+
+.all-user-cars {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1rem auto;
+  color: white;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.your-car h3 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}

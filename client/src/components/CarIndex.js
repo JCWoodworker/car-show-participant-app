@@ -47,8 +47,8 @@ const CarIndex = (props) => {
     fetchCarData()  
   }, [])
 
-  let CarIndexrmation = null
-  carData ? CarIndexrmation = 
+  let allUserCars = null
+  carData ? allUserCars = 
     carData.map((car) => {
       return (
         <CarTile
@@ -58,7 +58,7 @@ const CarIndex = (props) => {
         />
       )
     })
-  : CarIndexrmation = <p>No car has been registered</p>
+  : allUserCars = <p>No car has been registered</p>
 
   let carPlurality = <h3>Your Car</h3>
   carData.length > 1 ? carPlurality = <h3>Your Cars</h3> : carPlurality = <h3>Your Car</h3>
@@ -78,7 +78,9 @@ const CarIndex = (props) => {
       <div className="your-car">
         {carPlurality}
         {noCarMessage}
-        {CarIndexrmation}
+        <div className="all-user-cars">
+          {allUserCars}
+        </div>
       </div>
       <div className="car-registration">
         {carRegistration}

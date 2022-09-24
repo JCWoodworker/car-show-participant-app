@@ -1,0 +1,21 @@
+@import "./colors";
+
+.top-bar {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  background-color: $dark-gray;
+  color: white;
+  padding: 1.5rem;
+  border: 5px solid $dark-gray;
+}
+
+.authenticated-list-items {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+  gap: 1rem;
+  width: 100%;
+}

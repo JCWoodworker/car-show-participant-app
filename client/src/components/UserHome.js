@@ -6,7 +6,7 @@ const UserHome = (props) => {
   const currentUser = useContext(userContext) ? useContext(userContext) : null
   let message = null
   currentUser ? message =
-    <div className="main-page-container-child-1">
+    <div className="user-home-page-container">
       <h2>Welcome {currentUser.firstName}!</h2>
       <CarIndex />
     </div>
