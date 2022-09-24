@@ -1,18 +1,19 @@
-import React, { useState, useEffect, createContext } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { hot } from "react-hot-loader/root";
+import React, { useState, useEffect, createContext } from "react"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { hot } from "react-hot-loader/root"
 
-import getCurrentUser from "../services/getCurrentUser";
-import "../assets/scss/main.scss";
-import RegistrationForm from "./registration/RegistrationForm";
-import SignInForm from "./authentication/SignInForm";
-import TopBar from "./layout/TopBar";
+import getCurrentUser from "../services/getCurrentUser"
+import "../assets/scss/main.scss"
+import RegistrationForm from "./registration/RegistrationForm"
+import SignInForm from "./authentication/SignInForm"
+import TopBar from "./layout/TopBar"
 
-import UserHome from "./UserHome";
-export const userContext = createContext();
+import UserHome from "./UserHome"
+import AdminHome from "./AdminHome"
+export const userContext = createContext()
 
 const App = (props) => {
-  const [currentUser, setCurrentUser] = useState(undefined);
+  const [currentUser, setCurrentUser] = useState(undefined)
   const fetchCurrentUser = async () => {
     try {
       const user = await getCurrentUser()
@@ -25,6 +26,13 @@ const App = (props) => {
   useEffect(() => {
     fetchCurrentUser()
   }, [])
+  
+  let userHomeDisplay = null
+  if (currentUser) {
+    currentUser.isAdmin ? userHomeDisplay = <AdminHome /> : userHomeDisplay = <UserHome />
+  } else {
+    userHomeDisplay = <p>Please sign in or register</p>
+  }
 
 
   return (
@@ -37,7 +45,7 @@ const App = (props) => {
         <div className="main-page-container">
           <Route exact path="/">
             <userContext.Provider value={currentUser}>
-              <UserHome />
+              {userHomeDisplay}
             </userContext.Provider>
           </Route>
           <Route exact path="/users/new" component={RegistrationForm} />
@@ -45,7 +53,7 @@ const App = (props) => {
         </div>
       </Switch>
     </Router>
-  );
-};
+  )
+}
 
-export default hot(App);
+export default hot(App)
