@@ -5,6 +5,7 @@ import { User } from "../../../models/index.js";
 const usersRouter = new express.Router();
 
 usersRouter.post("/", async (req, res) => {
+  debugger
   const { email, firstName, password, passwordConfirmation } = req.body;
   try {
     const persistedUser = await User.query().insertAndFetch({ email, password, firstName });
