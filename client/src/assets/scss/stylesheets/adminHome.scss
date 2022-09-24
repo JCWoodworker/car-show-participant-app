@@ -1,0 +1,29 @@
+.admin-home-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.admin-links-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.admin-link {
+  padding: 1rem;
+  margin: 1rem;
+  background-color: $dark-gray;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.admin-link:hover {
+  background-color: $dark-maroon;
+}
+.admin-link:active {
+  background-color: $maroon;
+}
