@@ -25,6 +25,19 @@ const CarInfo = (props) => {
     }
   }
 
+  const deleteCar = async (car) => {
+    console.log(car)
+    confirm(`Are you sure you want to delete your ${car.year} ${car.make} ${car.model}?`)
+    try {
+      const response = await axios.delete(`/api/v1/cars`, { data: {car} })
+      const newCarData = carData.filter(vehicle => vehicle.id !== car.id)
+      alert(`Your ${car.year} ${car.make} ${car.model} has been deleted.`)
+      setCarData(newCarData)
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
 
   useEffect(() => {
     fetchCarData()  
@@ -37,6 +50,7 @@ const CarInfo = (props) => {
         <CarTile
           key={car.id}
           car={car}
+          deleteCar={deleteCar}
         />
       )
     })
@@ -44,6 +58,8 @@ const CarInfo = (props) => {
 
   let carPlurality = <h3>Your Car</h3>
   carData.length > 1 ? carPlurality = <h3>Your Cars</h3> : carPlurality = <h3>Your Car</h3>
+  let noCarMessage = null
+  carData.length === 0 ? noCarMessage = <p>No car has been registered yet!</p> : noCarMessage = null
 
     let carRegistration = (
       <div className="car-registration">
@@ -57,6 +73,7 @@ const CarInfo = (props) => {
     <div className="car-container">
       <div className="your-car">
         {carPlurality}
+        {noCarMessage}
         {carInformation}
       </div>
       <div className="car-registration">

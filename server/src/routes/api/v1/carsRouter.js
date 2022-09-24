@@ -39,4 +39,14 @@ const carsRouter = new express.Router()
     }
   })
 
+  carsRouter.delete('/', async (req, res) => {
+    const carId = req.body.car.id
+    try {
+      await Car.query().deleteById(carId)
+      return res.status(200).json({ message: "deleted" })
+    } catch (error) {
+      return res.status(500).json({ errors: error })
+    }
+  })
+
 export default carsRouter
