@@ -15,6 +15,7 @@ const CarRegistrationForm = ({ addCar }) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     addCar(carPayload)
+    clearForm()
     setShouldRedirect(true)
   }
 
@@ -24,7 +25,15 @@ const CarRegistrationForm = ({ addCar }) => {
       [event.currentTarget.name]: event.currentTarget.value,
     })
   }
-
+  
+  const clearForm = () => {
+    setCarPayload({
+      userId: currentUser.id,
+      year: "",
+      make: "",
+      model: "",
+    })
+  }
 
   return (
     <div className="car-registration-form">
