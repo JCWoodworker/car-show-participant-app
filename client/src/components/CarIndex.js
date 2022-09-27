@@ -44,11 +44,8 @@ const CarIndex = (props) => {
 
   const registerCar = async (carPayload) => {
     try {
-      debugger
       const response = await axios.post(`api/v1/show-registrations`, { data: {carPayload} })
-      debugger
-      //const newlyRegisteredCar = response.data.car
-      //setCarData([...carData, newlyRegisteredCar])
+      
     } catch(err) {
       console.log(err)
     }
