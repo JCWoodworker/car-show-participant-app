@@ -1,6 +1,6 @@
 import Car from "../../models/Car.js"
 
-class VoteSeeder {
+class CarSeeder {
   static async seed() {
     const carData = [
       {
@@ -39,4 +39,4 @@ class VoteSeeder {
   }
 }
 
-export default VoteSeeder
+export default CarSeeder

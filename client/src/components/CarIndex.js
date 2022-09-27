@@ -26,7 +26,6 @@ const CarIndex = (props) => {
   }
 
   const deleteCar = async (car) => {
-    console.log(car)
     confirm(`Are you sure you want to delete your ${car.year} ${car.make} ${car.model}?`)
     try {
       const response = await axios.delete(`/api/v1/cars`, { data: {car} })
@@ -43,6 +42,20 @@ const CarIndex = (props) => {
     }
   }
 
+  const registerCar = async (carPayload) => {
+    try {
+      debugger
+      const response = await axios.post(`api/v1/show-registrations`, { data: {carPayload} })
+      debugger
+      //const newlyRegisteredCar = response.data.car
+      //setCarData([...carData, newlyRegisteredCar])
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
+
+
   useEffect(() => {
     fetchCarData()  
   }, [])
@@ -55,6 +68,7 @@ const CarIndex = (props) => {
           key={car.id}
           car={car}
           deleteCar={deleteCar}
+          registerCar={registerCar}
         />
       )
     })

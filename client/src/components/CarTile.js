@@ -1,9 +1,14 @@
 import React from "react"
 
-const CarTile = ({ car, deleteCar }) => {
-  const handleClick = (event) => {
+const CarTile = ({ car, deleteCar, registerCar }) => {
+  const handleDeleteClick = (event) => {
     event.preventDefault()
     deleteCar(car)
+  }
+
+  const handleRegisterClick = (event) => {
+    event.preventDefault()
+    registerCar(car.id)
   }
 
   return (
@@ -11,7 +16,8 @@ const CarTile = ({ car, deleteCar }) => {
       <p>Year: {car.year}</p>
       <p>Make: {car.make}</p>
       <p>Model: {car.model}</p>
-      <button onClick={handleClick}>Delete This Car</button>
+      <button onClick={handleDeleteClick}>Delete This Car</button>
+      <button onClick={handleRegisterClick}>Register This Car For The 2023 Show</button>
     </div>
   )
 }
