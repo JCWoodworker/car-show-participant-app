@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const AdminHome = (props) => {
   const [adminArrays, setAdminArrays] = useState({
-    cars: [],
+    registeredShowCars: [],
     votes: [],
     users: []
   })
@@ -14,8 +14,10 @@ const AdminHome = (props) => {
   const fetchAllData = async () => {
       try {
         const response = await axios.get(`/api/v1/admin`)
-        const { cars, votes, users } = response.data.allData
-        setAdminArrays({ cars, votes, users })
+        debugger
+        const { registeredShowCars, votes, users } = response.data.allData
+        debugger
+        setAdminArrays({ registeredShowCars, votes, users })
       } catch(err) {
         console.log(err)
       }
@@ -43,7 +45,7 @@ const AdminHome = (props) => {
     }
   }
 
-  showCars ? showInformation = adminArrays.cars.map((car) => {
+  showCars ? showInformation = adminArrays.registeredShowCars.map((car) => {
     return (
       <div key={car.id}>
         <p>{car.year} {car.make} {car.model}</p>
@@ -82,7 +84,7 @@ const AdminHome = (props) => {
           className="admin-link" 
           onClick={handleButtonClick}
           name="cars">
-            Registered Cars
+            Registered Show Cars
         </button>
         <button
           className="admin-link"

@@ -26,7 +26,7 @@ const CarIndex = (props) => {
   }
 
   const deleteCar = async (car) => {
-    confirm(`Are you sure you want to delete your ${car.year} ${car.make} ${car.model}?`)
+    if (confirm(`Are you sure you want to delete your ${car.year} ${car.make} ${car.model}?`)) {
     try {
       const response = await axios.delete(`/api/v1/cars`, { data: {car} })
       if (!response) {
@@ -40,25 +40,26 @@ const CarIndex = (props) => {
     catch(err) {
       console.log(err)
     }
+    } else {
+      alert("Cancelled deletion.")
+    }
   }
 
   const registerCar = async (carPayload) => {
     try {
       const response = await axios.post(`api/v1/show-registrations`, { data: {carPayload} })
-      
+      console.log("you registered your car")
     } catch(err) {
-      console.log(err)
+      console.log(`${err} - error registering car`)
     }
   }
-
-
 
   useEffect(() => {
     fetchCarData()  
   }, [])
 
-  let allUserCars = null
-  carData ? allUserCars = 
+  let showAllUserCars = null
+  carData ? showAllUserCars = 
     carData.map((car) => {
       return (
         <CarTile
@@ -69,7 +70,7 @@ const CarIndex = (props) => {
         />
       )
     })
-  : allUserCars = <p>No car has been registered</p>
+  : showAllUserCars = <p>No car has been registered</p>
 
   let carPlurality = <h3>Your Car</h3>
   carData.length > 1 ? carPlurality = <h3>Your Cars</h3> : carPlurality = <h3>Your Car</h3>
@@ -90,7 +91,7 @@ const CarIndex = (props) => {
         {carPlurality}
         {noCarMessage}
         <div className="all-user-cars">
-          {allUserCars}
+          {showAllUserCars}
         </div>
       </div>
       <div className="car-registration">

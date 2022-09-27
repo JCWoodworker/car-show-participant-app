@@ -1,5 +1,6 @@
 import express from 'express'
-import { User, Car, Vote } from "../../../models/index.js"
+import { User, Vote, ShowRegistration } from "../../../models/index.js"
+import ShowRegistrationSerializer from "../../../../serializers/ShowRegistrationSerializer.js"
 
 const adminRouter = new express.Router()
 
@@ -10,10 +11,10 @@ const adminRouter = new express.Router()
       const {user} = req
       if (user.isAdmin) {
         try {
-            const cars = await Car.query()
+            const registeredShowCars = await ShowRegistration.query()
             const votes = await Vote.query()
             const users = await User.query()
-              return res.status(200).json({ allData: { cars, votes, users } })
+              return res.status(200).json({ allData: { registeredShowCars, votes, users } })
         } catch (error) {
           return res.status(500).json({ errors: error })
         }
