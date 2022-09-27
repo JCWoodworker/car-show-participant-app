@@ -12,9 +12,14 @@ const adminRouter = new express.Router()
       if (user.isAdmin) {
         try {
             const registeredShowCars = await ShowRegistration.query()
+            const serializedShowCars = await Promise.all(
+              registeredShowCars.map(async (showCars) => {
+                return await ShowRegistrationSerializer.getSummary(showCars)
+              })
+            )
             const votes = await Vote.query()
             const users = await User.query()
-              return res.status(200).json({ allData: { registeredShowCars, votes, users } })
+              return res.status(200).json({ allData: { serializedShowCars, votes, users } })
         } catch (error) {
           return res.status(500).json({ errors: error })
         }

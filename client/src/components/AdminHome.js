@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const AdminHome = (props) => {
   const [adminArrays, setAdminArrays] = useState({
-    registeredShowCars: [],
+    serializedShowCars: [],
     votes: [],
     users: []
   })
@@ -14,10 +14,8 @@ const AdminHome = (props) => {
   const fetchAllData = async () => {
       try {
         const response = await axios.get(`/api/v1/admin`)
-        debugger
-        const { registeredShowCars, votes, users } = response.data.allData
-        debugger
-        setAdminArrays({ registeredShowCars, votes, users })
+        const { serializedShowCars, votes, users } = response.data.allData
+        setAdminArrays({ serializedShowCars, votes, users })
       } catch(err) {
         console.log(err)
       }
@@ -45,10 +43,10 @@ const AdminHome = (props) => {
     }
   }
 
-  showCars ? showInformation = adminArrays.registeredShowCars.map((car) => {
+  showCars ? showInformation = adminArrays.serializedShowCars.map((registeredCar) => {
     return (
-      <div key={car.id}>
-        <p>{car.year} {car.make} {car.model}</p>
+      <div key={registeredCar.car.id}>
+        <p>#{registeredCar.registrationNumber} - {registeredCar.car.year} {registeredCar.car.make} {registeredCar.car.model}</p>
       </div>
     )
   }) : null
