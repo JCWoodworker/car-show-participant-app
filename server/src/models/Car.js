@@ -6,6 +6,7 @@ class Car extends Model {
 
   static get relationMappings() {
     const User = require("./User.js")
+    const showRegistration = require("./showRegistration.js")
 
     return {
       user: {
@@ -15,9 +16,17 @@ class Car extends Model {
           from: "cars.userId",
           to: "users.id"
         }
+      },
+      showRegistration: {
+        relation: Model.HasOneRelation,
+        modelClass: showRegistration,
+        filter: query => query.select("registrationNumber"),
+        join: {
+          from: "cars.id",
+          to: "showRegistrations.registeredCar"
+        }
       }
     }
-
   }
 
   static get jsonSchema() {

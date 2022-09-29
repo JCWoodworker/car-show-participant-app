@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
+import ClipLoader from "react-spinners/ClipLoader"
 
-const PayPal = ({ car }) => {
+const PayPal = ({ car, registerCar }) => {
 
   const [paidFor, setPaidFor] = useState(false)
   const [error, setError] = useState(null)
@@ -12,45 +13,51 @@ const PayPal = ({ car }) => {
     description: "2023 Michael P Stefanic Car Show Registration"
   }
 
-  const handleRegisterClick = (event) => {
-    event.preventDefault()
-    registerCar(car.id)
-  }
-
-  useEffect(() => {
-    window.paypal
-      .Buttons({
-        createOrder: (data, actions) => {
-          return actions.order.create({
-            purchase_units: [
-              {
-                description: product.description,
-                amount: {
-                  currency_code: 'USD',
-                  value: product.price,
-                },
+  let processPayment = () => {
+  window.paypal
+    .Buttons({
+      createOrder: (data, actions) => {
+        return actions.order.create({
+          purchase_units: [
+            {
+              description: product.description,
+              amount: {
+                currency_code: 'USD',
+                value: product.price,
               },
-            ],
-          })
-        },
-        onApprove: async (data, actions) => {
-          const order = await actions.order.capture()
-          setPaidFor(true)
-          handleRegisterClick(car.id)
-          console.log(order)
-        },
-        onError: err => {
-          setError(err)
-          console.error(err)
-        },
-      })
-      .render(paypalRef.current)
-  }, [product.description, product.price])
+            },
+          ],
+        })
+      },
+      onApprove: async (data, actions) => {
+        const order = await actions.order.capture()
+        setPaidFor(true)
+        registerCar(car.id)
+        console.log(order)
+      },
+      onError: err => {
+        setError(err)
+        console.error(err)
+      },
+    })
+    .render(paypalRef.current)
+  }
+  
+  useEffect(() => {
+    processPayment()
+  }, [])
+
 
   if (paidFor) {
+    window.setTimeout(() => {
+      window.location.reload()
+    }, 6000)
     return (
       <div>
         <p>Congrats, this car is registered for the show!</p>
+        <p>Generating your regisration number, please wait a moment ...
+          <ClipLoader color={"#123abc"} size={20} />
+        </p>
       </div>
     )
   }
