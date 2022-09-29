@@ -1,17 +1,16 @@
-.car-info {
+.car-container {
   display: flex;
   flex-flow: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  margin: 1rem;
-  background-color: $dark-gray;
-  border-radius: 5px;
-  color: white;
+  margin: 1rem auto;
   padding: 1rem;
+  border-radius: 5px;
+  overflow-y: auto;
 }
-.car-info p {
-  margin: 0.5px;
-  padding: 0.5px;
+
+.your-car h3 {
+  text-align: center;
 }
 
 .all-user-cars {
@@ -26,8 +25,19 @@
   overflow-y: auto;
 }
 
-.your-car h3 {
-  margin: 0;
-  padding: 0;
-  text-align: center;
+// Found in CarTile.js
+.car-info {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 1rem;
+  background-color: $dark-gray;
+  border-radius: 5px;
+  color: white;
+  padding: 1rem;
+}
+.car-info p {
+  margin: 0.5px;
+  padding: 0.5px;
 }

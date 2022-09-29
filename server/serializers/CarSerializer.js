@@ -6,6 +6,8 @@ class CarSerializer {
     for (const attribute of allowedAttributes) {
       serializedCar[attribute] = car[attribute]
     }
+    // const isCarRegistered = serializedCar.$relatedQuery("showRegistrations")
+    // debugger
     return serializedCar
   }
 }
