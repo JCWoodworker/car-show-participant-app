@@ -10,13 +10,11 @@ const CarRegistrationForm = ({ addCar }) => {
     model: "",
   })
   const [errors, setErrors] = useState({})
-  const [shouldRedirect, setShouldRedirect] = useState(false)
 
   const handleSubmit = (event) => {
     event.preventDefault()
     addCar(carPayload)
     clearForm()
-    setShouldRedirect(true)
   }
 
   const onInputChange = (event) => {
