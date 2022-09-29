@@ -6,7 +6,7 @@ class Car extends Model {
 
   static get relationMappings() {
     const User = require("./User.js")
-    const showRegistration = require("./showRegistration.js")
+    const showRegistration = require("./ShowRegistration.js")
 
     return {
       user: {
