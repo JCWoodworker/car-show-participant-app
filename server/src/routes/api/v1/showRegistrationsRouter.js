@@ -1,7 +1,6 @@
 import express from 'express'
 import { ShowRegistration } from "../../../models/index.js"
 import ShowRegistrationSerializer from "../../../../serializers/ShowRegistrationSerializer.js"
-
 const showRegistrationsRouter = new express.Router()
 
 showRegistrationsRouter.get('/', async (req, res) => {
@@ -23,7 +22,9 @@ showRegistrationsRouter.post('/', async (req, res) => {
     return res.status(401).json({ errors: 'Unauthorized.  Must be logged in to register a car' })
   } else {
     try {
-      const newShowRegistration = await ShowRegistration.query().insertAndFetch({registeredCarId: parseInt(req.body.data.carPayload), registrationNumber: Math.floor(Math.random() * 1000000)})
+      const getNextRegistrationNumber = await ShowRegistration.query().max('registrationNumber')
+      const nextRegistrationNumber = getNextRegistrationNumber[0].max + 1
+      const newShowRegistration = await ShowRegistration.query().insertAndFetch({registeredCarId: parseInt(req.body.data.carPayload), registrationNumber: nextRegistrationNumber})
       return res.status(201).json({ showRegistration: newShowRegistration })
     } catch (error) {
       return res.status(500).json({ errors: error })
