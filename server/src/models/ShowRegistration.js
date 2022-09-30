@@ -2,7 +2,7 @@ const Model = require("./Model.js")
 const unique = require("objection-unique")
 
 const uniqueFunc = unique({
-  fields: ["registeredCar"],
+  fields: ["registeredCarId"],
   identifiers: ["id"],
 })
 
@@ -19,7 +19,7 @@ class ShowRegistration extends uniqueFunc(Model) {
         relation: Model.BelongsToOneRelation,
         modelClass: Car,
         join: {
-          from: "showRegistrations.registeredCar",
+          from: "showRegistrations.registeredCarId",
           to: "cars.id"
         }
       }
@@ -30,10 +30,10 @@ class ShowRegistration extends uniqueFunc(Model) {
 
     return {
       type: "object",
-      required: ["registrationNumber", "registeredCar"],
+      required: ["registrationNumber", "registeredCarId"],
       properties: {
         registrationNumber: {type: "integer"},
-        registeredCar: {type: "integer"}
+        registeredCarId: {type: "integer"}
       }
     }
 

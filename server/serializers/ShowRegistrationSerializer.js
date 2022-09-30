@@ -1,6 +1,6 @@
 class ShowRegistrationSerializer {
   static async getSummary(registration) {
-    const allowedAttributes = ["id", "registeredCar", "registrationNumber"]
+    const allowedAttributes = ["id", "registeredCarId", "registrationNumber"]
 
     let serializedShowRegistration = {}
     for (const attribute of allowedAttributes) {
