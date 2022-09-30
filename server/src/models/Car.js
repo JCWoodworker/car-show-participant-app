@@ -23,7 +23,7 @@ class Car extends Model {
         filter: query => query.select("registrationNumber"),
         join: {
           from: "cars.id",
-          to: "showRegistrations.registeredCar"
+          to: "showRegistrations.registeredCarId"
         }
       }
     }

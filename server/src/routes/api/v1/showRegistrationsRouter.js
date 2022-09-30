@@ -23,7 +23,7 @@ showRegistrationsRouter.post('/', async (req, res) => {
     return res.status(401).json({ errors: 'Unauthorized.  Must be logged in to register a car' })
   } else {
     try {
-      const newShowRegistration = await ShowRegistration.query().insertAndFetch({registeredCar: parseInt(req.body.data.carPayload), registrationNumber: Math.floor(Math.random() * 1000000)})
+      const newShowRegistration = await ShowRegistration.query().insertAndFetch({registeredCarId: parseInt(req.body.data.carPayload), registrationNumber: Math.floor(Math.random() * 1000000)})
       return res.status(201).json({ showRegistration: newShowRegistration })
     } catch (error) {
       return res.status(500).json({ errors: error })

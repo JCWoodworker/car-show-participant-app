@@ -5,15 +5,15 @@ class ShowRegistrationSeeder {
     const showRegistrationData = [
       {
         registrationNumber: 2,
-        registeredCar: 1,
+        registeredCarId: 1,
       },
       {
         registrationNumber: 3,
-        registeredCar: 2,
+        registeredCarId: 2,
       },
       {
         registrationNumber: 4,
-        registeredCar: 3,
+        registeredCarId: 3,
       },    
     ]
 
