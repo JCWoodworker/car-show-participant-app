@@ -6,6 +6,7 @@ const RegistrationForm = () => {
   const [userPayload, setUserPayload] = useState({
     email: "",
     firstName: "",
+    cellPhone: "",
     password: "",
     passwordConfirmation: "",
     isAdmin: false,
@@ -17,7 +18,7 @@ const RegistrationForm = () => {
 
   const validateInput = (payload) => {
     setErrors({})
-    const { email, firstName, password, passwordConfirmation } = payload
+    const { email, firstName, password, cellPhone, passwordConfirmation } = payload
     const emailRegexp = config.validation.email.regexp
     let newErrors = {}
     if (!email.match(emailRegexp)) {
@@ -30,28 +31,35 @@ const RegistrationForm = () => {
     if (password.trim() == "") {
       newErrors = {
         ...newErrors,
-        password: "is required",
+        password: "Password is required",
+      }
+    }
+
+    if (firstName.trim() == "") {
+      newErrors = {
+        ...newErrors,
+        firstName: "First name is required",
+      }
+    }
+    
+    if ((cellPhone.trim() == "") || (cellPhone.length < 10) || (cellPhone.length > 10) || (!cellPhone.match(/^[0-9]{10}$/))) {
+      newErrors = {
+        ...newErrors,
+        cellPhone: "Cell Phone is required, must be 10 digits, no dashes",
       }
     }
 
     if (passwordConfirmation.trim() === "") {
       newErrors = {
         ...newErrors,
-        passwordConfirmation: "is required",
+        passwordConfirmation: "Password confirmation is required",
       }
-
-    if (firstName.trim() == "") {
-      newErrors = {
-        ...newErrors,
-        firstName: "is required",
-      }
-    }
-  
+      
     } else {
       if (passwordConfirmation !== password) {
         newErrors = {
           ...newErrors,
-          passwordConfirmation: "does not match password",
+          passwordConfirmation: "Confirmation does not match password",
         }
       }
     }
@@ -103,16 +111,30 @@ const RegistrationForm = () => {
           <label>
             First Name
             <input type="text" name="firstName" value={userPayload.firstName} onChange={onInputChange} />
-            <FormError error={errors.firstName} />
           </label>
         </div>
+        <FormError error={errors.firstName} />
+        <div>
+          <label>
+            Cell Phone
+            <input 
+              type="tel" 
+              name="cellPhone"
+              inputMode="numeric"  
+              minLength={10}
+              maxLength={10}
+              value={userPayload.cellPhone} 
+              onChange={onInputChange} />
+          </label>
+        </div>
+        <FormError error={errors.cellPhone} />
         <div>
           <label>
             Email
             <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
-            <FormError error={errors.email} />
           </label>
         </div>
+        <FormError error={errors.email} />
         <div>
           <label>
             Password
@@ -122,9 +144,9 @@ const RegistrationForm = () => {
               value={userPayload.password}
               onChange={onInputChange}
             />
-            <FormError error={errors.password} />
           </label>
         </div>
+        <FormError error={errors.password} />
         <div>
           <label>
             Password Confirmation
@@ -134,9 +156,9 @@ const RegistrationForm = () => {
               value={userPayload.passwordConfirmation}
               onChange={onInputChange}
             />
-            <FormError error={errors.passwordConfirmation} />
           </label>
         </div>
+        <FormError error={errors.passwordConfirmation} />
         <div>
           <input type="submit" className="button" value="Register" />
         </div>
