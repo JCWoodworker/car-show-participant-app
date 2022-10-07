@@ -11,6 +11,20 @@
   padding: 1.5rem;
 }
 
+.top-bar-left {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-bar-sponsors {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .authenticated-list-items {
   display: flex;
   flex-flow: row;
