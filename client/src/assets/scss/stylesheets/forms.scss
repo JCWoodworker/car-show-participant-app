@@ -1,0 +1,38 @@
+.grid-container{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 auto;
+  background-color: $dark-gray;
+  color: white;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+input {
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+}
+
+#firstName,
+#cellPhone,
+#email,
+#password,
+#passwordConfirmation {
+  width: 150px;
+  height: 20px;
+  margin: 5px;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}

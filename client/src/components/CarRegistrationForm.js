@@ -41,19 +41,19 @@ const CarRegistrationForm = ({ addCar }) => {
         <form onSubmit={handleSubmit}>
           <div>
             <label>
-              Year
+              Year:
               <input type="text" name="year" value={carPayload.year} onChange={onInputChange} />
             </label>
           </div>
           <div>
             <label>
-              make
+              Make:
               <input type="text" name="make" value={carPayload.make} onChange={onInputChange} />
             </label>
           </div>
           <div>
             <label>
-              model
+              Model:
               <input type="text" name="model" value={carPayload.model} onChange={onInputChange} />
             </label>
           </div>

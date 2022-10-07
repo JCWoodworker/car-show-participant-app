@@ -31,7 +31,7 @@ const RegistrationForm = () => {
     if (password.trim() == "") {
       newErrors = {
         ...newErrors,
-        password: "Password is required",
+        password: "is required",
       }
     }
 
@@ -48,13 +48,13 @@ const RegistrationForm = () => {
         cellPhone: "Cell Phone is required, must be 10 digits, no dashes",
       }
     }
-
+  
     if (passwordConfirmation.trim() === "") {
       newErrors = {
         ...newErrors,
         passwordConfirmation: "Password confirmation is required",
       }
-      
+
     } else {
       if (passwordConfirmation !== password) {
         newErrors = {
@@ -109,17 +109,23 @@ const RegistrationForm = () => {
       <form onSubmit={onSubmit}>
         <div>
           <label>
-            First Name
-            <input type="text" name="firstName" value={userPayload.firstName} onChange={onInputChange} />
+            First Name:
+            <input 
+              type="text" 
+              name="firstName" 
+              id="firstName" 
+              value={userPayload.firstName} 
+              onChange={onInputChange} />
           </label>
         </div>
         <FormError error={errors.firstName} />
         <div>
           <label>
-            Cell Phone
+            Cell Phone:
             <input 
               type="tel" 
               name="cellPhone"
+              id="cellPhone"
               inputMode="numeric"  
               minLength={10}
               maxLength={10}
@@ -130,17 +136,23 @@ const RegistrationForm = () => {
         <FormError error={errors.cellPhone} />
         <div>
           <label>
-            Email
-            <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
+            Email:
+            <input 
+              type="text" 
+              name="email" 
+              id="email"
+              value={userPayload.email} 
+              onChange={onInputChange} />
           </label>
         </div>
         <FormError error={errors.email} />
         <div>
           <label>
-            Password
+            Password:
             <input
               type="password"
               name="password"
+              id="password"
               value={userPayload.password}
               onChange={onInputChange}
             />
@@ -149,18 +161,22 @@ const RegistrationForm = () => {
         <FormError error={errors.password} />
         <div>
           <label>
-            Password Confirmation
+            Confirm Password:
             <input
               type="password"
               name="passwordConfirmation"
+              id="passwordConfirmation"
               value={userPayload.passwordConfirmation}
               onChange={onInputChange}
             />
           </label>
         </div>
         <FormError error={errors.passwordConfirmation} />
-        <div>
-          <input type="submit" className="button" value="Register" />
+        <div className="user-registration-button-container">
+          <input 
+            type="submit" 
+            className="user-registration-button" 
+            value="Register" />
         </div>
       </form>
     </div>
