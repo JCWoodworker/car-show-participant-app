@@ -51,11 +51,12 @@ class User extends uniqueFunc(Model) {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["email", "firstName", "isAdmin"],
+      required: ["email", "firstName", "cellPhone", "isAdmin"],
 
       properties: {
         email: { type: "string", format: "email" },
         firstName: { type: "string", minLength: 1, maxLength: 25 },
+        cellPhone: { type: "string", minLength: 10, maxLength: 10 },
         isAdmin: { type: "boolean" },
         cryptedPassword: { type: "string" },
       },
