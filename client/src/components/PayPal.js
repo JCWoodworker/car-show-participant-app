@@ -10,7 +10,7 @@ const PayPal = ({ car, registerCar }) => {
   const product = {
     price: 20.00,
     name: "Car Registration",
-    description: "2023 Michael P Stefanic Car Show Registration"
+    description: "2023 Car Show Registration"
   }
 
   let processPayment = () => {
@@ -63,11 +63,11 @@ const PayPal = ({ car, registerCar }) => {
   }
 
   return (
-    <div>
+    <div className='paypal-button-container'>
       {error && <div>Uh oh, an error occurred! {error.message}</div>}
-      <h1>
-        {product.description} for ${product.price}
-      </h1>
+      <div className='paypal-item-description'>
+        <p>{product.description} - ${product.price}</p>
+      </div>
       <div ref={paypalRef} />
     </div>
   )
