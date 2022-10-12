@@ -23,6 +23,8 @@ exports.up = async (knex) => {
         .index()
         .references("cars.id")
         .onDelete("CASCADE")
+      table.string("paymentType")
+        .notNullable()
       table.timestamp("createdAt")
         .notNullable()
         .defaultTo(knex.fn.now())

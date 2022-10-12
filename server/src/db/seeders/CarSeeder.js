@@ -26,12 +26,6 @@ class CarSeeder {
         year: 1976,
         make: "Pontiac",
         model: "Trans Am",
-      },
-      {
-        userId: 5,
-        year: 1933,
-        make: "Ford",
-        model: "Coupe",
       }
     ]
 

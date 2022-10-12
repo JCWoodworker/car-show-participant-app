@@ -6,23 +6,23 @@ class ShowRegistrationSeeder {
       {
         registrationNumber: 1,
         registeredCarId: 1,
+        paymentType: "online"
       },
       {
         registrationNumber: 2,
         registeredCarId: 2,
+        paymentType: "online"
       },
       {
         registrationNumber: 3,
         registeredCarId: 3,
+        paymentType: "online"
       },    
       {
         registrationNumber: 4,
         registeredCarId: 4,
-      },    
-      {
-        registrationNumber: 5,
-        registeredCarId: 5,
-      },    
+        paymentType: "online"
+      }  
     ]
 
     for (const singleShowRegistration of showRegistrationData) {

@@ -1,57 +1,65 @@
 import React, { useState, useEffect } from "react"
 import axios from 'axios'
+import AdminShowCars from "./AdminShowCars"
 
 const AdminHome = (props) => {
   const [adminArrays, setAdminArrays] = useState({
-    serializedShowCars: [],
+    usersAndCars: [],
     votes: [],
-    users: []
   })
-  const [showCars, setShowCars] = useState(false)
-  const [showVotes, setShowVotes] = useState(false)
-  const [showUsers, setShowUsers] = useState(false)
+  const [allUsersAndCars, setAllUsersAndCars] = useState(false)
+  const [allVotes, setAllVotes] = useState(false)
+  const [newCarRegistered, setNewCarRegistered] = useState(false)
 
   const fetchAllData = async () => {
       try {
         const response = await axios.get(`/api/v1/admin`)
-        const { serializedShowCars, votes, users } = response.data.allData
-        setAdminArrays({ serializedShowCars, votes, users })
+        const { carAndUserData, votes } = response.data
+        setAdminArrays({ carAndUserData, votes })
+        setNewCarRegistered(false)
       } catch(err) {
         console.log(err)
       }
     }
-
+  
+  const registerCar = async (payload) => {
+    try {
+      const response = await axios.post(`api/v1/show-registrations`, { data: {payload} })
+      console.log("you registered your car")
+      setNewCarRegistered(true)
+    } catch(err) {
+      console.log(`${err} - error registering car`)
+    }
+  }
+  
   useEffect(() => {
     fetchAllData()
-  }, [])
+  }, [newCarRegistered])
 
   let showInformation = null
   const handleButtonClick = (event) => {
     
-    if (event.target.name === "users") {
-      setShowCars(false)
-      setShowVotes(false)
-      setShowUsers(true)
-    } else if (event.target.name === "cars") {
-      setShowCars(true)
-      setShowVotes(false)
-      setShowUsers(false)
+    if (event.target.name === "usersAndCars") {
+      setAllUsersAndCars(true)
+      setAllVotes(false)
     } else if (event.target.name === "votes") {
-      setShowCars(false)
-      setShowVotes(true)
-      setShowUsers(false)
+      setAllUsersAndCars(false)
+      setAllVotes(true)
     }
   }
 
-  showCars ? showInformation = adminArrays.serializedShowCars.map((registeredCar) => {
+  allUsersAndCars ? showInformation = adminArrays?.carAndUserData?.map((data) => {
     return (
-      <div key={registeredCar.car.id}>
-        <p>#{registeredCar.registrationNumber} - {registeredCar.car.year} {registeredCar.car.make} {registeredCar.car.model}</p>
-      </div>
+      <AdminShowCars
+        key={data.user.id}
+        user={data.user}
+        car={data.car}
+        registerCar={registerCar}
+      />
     )
   }) : null
 
-  showVotes ? showInformation = adminArrays.votes.map((vote) => {
+  allVotes ? showInformation = adminArrays?.votes?.map((vote) => {
     return (
       <div key={vote.id}>
         <p>First Place: {vote.firstPlace}</p>
@@ -61,19 +69,6 @@ const AdminHome = (props) => {
     )
   }) : null
 
-  showUsers ? showInformation = adminArrays.users.map((user) => {
-    return (
-      <div key={user.id}>
-        <p>{user.email}</p>
-      </div>
-    )
-  }) : null
-
-
-
-
-  
-
   return (
     <div className="admin-home-container">
       <h1>Admin Home</h1>
@@ -81,8 +76,8 @@ const AdminHome = (props) => {
         <button 
           className="admin-link" 
           onClick={handleButtonClick}
-          name="cars">
-            Registered Show Cars
+          name="usersAndCars">
+            All Users And Cars
         </button>
         <button
           className="admin-link"
@@ -90,14 +85,10 @@ const AdminHome = (props) => {
           name="votes">
             Votes
         </button>
-        <button
-          className="admin-link"
-          onClick={handleButtonClick}
-          name="users">
-            Users
-        </button>
       </div>
+      <div className="admin-cars-container">
       {showInformation}
+      </div>
     </div>
   )
 
