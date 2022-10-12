@@ -20,10 +20,33 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
-.admin-link:hover {
-  background-color: $dark-maroon;
+.admin-link {
+  min-width: 150px;
+  color: white;
+  &:hover {
+    background-color: black;
+  }
+  &:active {
+    background-color: $maroon;
+    color: greenyellow;
+  }
 }
-.admin-link:active {
-  background-color: $maroon;
+
+.admin-cars-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.adminCarListTile {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem auto;
+  padding: 0.75rem;
+  background-color: $dark-gray;
+  border-radius: 5px;
+  min-width: 350px;
 }

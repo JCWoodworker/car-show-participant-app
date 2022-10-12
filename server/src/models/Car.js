@@ -20,7 +20,7 @@ class Car extends Model {
       showRegistration: {
         relation: Model.HasOneRelation,
         modelClass: showRegistration,
-        filter: query => query.select("registrationNumber"),
+        filter: query => query.select(["registrationNumber", "paymentType"]),
         join: {
           from: "cars.id",
           to: "showRegistrations.registeredCarId"

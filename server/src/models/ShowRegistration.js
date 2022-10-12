@@ -30,10 +30,11 @@ class ShowRegistration extends uniqueFunc(Model) {
 
     return {
       type: "object",
-      required: ["registrationNumber", "registeredCarId"],
+      required: ["registrationNumber", "registeredCarId", "paymentType"],
       properties: {
         registrationNumber: {type: "integer"},
-        registeredCarId: {type: "integer"}
+        registeredCarId: {type: "integer"},
+        paymentType: {type: "string"}
       }
     }
 

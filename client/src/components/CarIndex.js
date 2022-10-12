@@ -32,7 +32,7 @@ const CarIndex = (props) => {
       if (!response) {
         console.log("Error deleting car")
       } else {
-      const newCarData = carData.filter(vehicle => vehicle.id !== car.id)
+      const newCarData = carData?.filter(vehicle => vehicle.id !== car.id)
       alert(`Your ${car.year} ${car.make} ${car.model} has been deleted.`)
       setCarData(newCarData)
       }
@@ -45,9 +45,9 @@ const CarIndex = (props) => {
     }
   }
 
-  const registerCar = async (carPayload) => {
+  const registerCar = async (payload) => {
     try {
-      const response = await axios.post(`api/v1/show-registrations`, { data: {carPayload} })
+      const response = await axios.post(`api/v1/show-registrations`, { data: {payload} })
       console.log("you registered your car")
     } catch(err) {
       console.log(`${err} - error registering car`)
@@ -60,10 +60,10 @@ const CarIndex = (props) => {
 
   let showAllUserCars = null
   carData ? showAllUserCars = 
-    carData.map((car) => {
+    carData?.map((car) => {
       return (
         <CarTile
-          key={car.id}
+          key={car?.id}
           car={car}
           deleteCar={deleteCar}
           registerCar={registerCar}
@@ -73,9 +73,9 @@ const CarIndex = (props) => {
   : showAllUserCars = <p>No car has been registered</p>
 
   let carPlurality = <h3>Your Car</h3>
-  carData.length > 1 ? carPlurality = <h3>Your Cars</h3> : carPlurality = <h3>Your Car</h3>
+  carData?.length > 1 ? carPlurality = <h3>Your Cars</h3> : carPlurality = <h3>Your Car</h3>
   let noCarMessage = null
-  carData.length === 0 ? noCarMessage = <p>No car has been registered yet!</p> : noCarMessage = null
+  carData?.length === 0 ? noCarMessage = <p>No car has been registered yet!</p> : noCarMessage = null
 
     let carRegistration = (
       <div className="car-registration">
