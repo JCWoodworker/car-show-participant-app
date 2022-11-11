@@ -8,22 +8,23 @@ const AdminShowCars = ({ user, car, registerCar }) => {
     setIsCarRegistered(true)
   }
 
-  let registrationInformation = (
-    <>
-      <p>Not Registered For 2023 Show</p>
-      <button onClick={payCashButton}>Register As Cash</button>
-    </>
-  )
-  if (isCarRegistered) {
-    registrationInformation = <p className="reg-info">Registered For 2023 - $$ {car.paymentType}: #{car.registrationNumber}</p>
+  let registrationInformation = "Not Registered"
+  isCarRegistered? registrationInformation = 
+    `#${car?.registrationNumber}` :
+    "Not Registered"
+
+  let paymentInfo = car?.paymentType
+  if (!isCarRegistered) {
+    paymentInfo = <button onClick={payCashButton}>Pay Cash</button>
   }
 
   return (
-    <div className="adminCarListTile">
-      <h4>{user.firstName}:</h4>
-      <p>{car.year} {car.make} {car.model}</p>
-      {registrationInformation}
-    </div>
+    <tr>
+      <td>{user?.firstName}:</td>
+      <td>{car?.year} {car?.make} {car?.model}</td>
+      <td>{registrationInformation}</td>
+      <td>{paymentInfo}</td>
+    </tr>
   )
 
 }

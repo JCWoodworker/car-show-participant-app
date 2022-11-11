@@ -3,6 +3,7 @@ import axios from 'axios'
 import AdminShowCars from "./AdminShowCars"
 
 const AdminHome = (props) => {
+
   const [adminArrays, setAdminArrays] = useState({
     usersAndCars: [],
     votes: [],
@@ -10,6 +11,7 @@ const AdminHome = (props) => {
   const [allUsersAndCars, setAllUsersAndCars] = useState(false)
   const [allVotes, setAllVotes] = useState(false)
   const [newCarRegistered, setNewCarRegistered] = useState(false)
+  const [sortReverse, setSortReverse] = useState(false)
 
   const fetchAllData = async () => {
       try {
@@ -38,7 +40,6 @@ const AdminHome = (props) => {
 
   let showInformation = null
   const handleButtonClick = (event) => {
-    
     if (event.target.name === "usersAndCars") {
       setAllUsersAndCars(true)
       setAllVotes(false)
@@ -48,7 +49,7 @@ const AdminHome = (props) => {
     }
   }
 
-  allUsersAndCars ? showInformation = adminArrays?.carAndUserData?.map((data) => {
+  let carInformation = adminArrays?.carAndUserData?.map((data) => {
     const key = (data.car.year * data.car.carId) + data.user.id
     return (
       <AdminShowCars
@@ -58,18 +59,84 @@ const AdminHome = (props) => {
         registerCar={registerCar}
       />
     )
-  }) : null
+  })
+
+  const handleSortUser = (event) => {
+    const { name } = event.target
+    const sortedArray = adminArrays.carAndUserData.sort((a, b) => {
+      if (a.user[name] < b.user[name]) {
+        return sortReverse? -1 : 1
+      } else if (a.user[name] > b.user[name]) {
+        return sortReverse? 1 : -1
+      } else {
+        return 0
+      }
+    })
+    setSortReverse(!sortReverse)
+    setAdminArrays({ ...adminArrays, carAndUserData: sortedArray })
+  }
+
+  const handleSortCar = (event) => {
+    const { name } = event.target
+    const sortedArray = adminArrays.carAndUserData.sort((a, b) => {
+      if (a.car[name] < b.car[name]) {
+        return sortReverse? 1 : -1
+      } else if (a.car[name] > b.car[name]) {
+        return sortReverse? -1 : 1
+      } else {
+        return 0
+      }
+    })
+    setSortReverse(!sortReverse)
+    setAdminArrays({ ...adminArrays, carAndUserData: sortedArray })
+  }
+
+  allUsersAndCars ? showInformation = 
+    <div className="admin-cars-table">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <button className="sort-button" name="firstName" onClick={handleSortUser}>
+                Name
+              </button>
+            </th>
+            <th>
+              <button className="sort-button" name="year" onClick={handleSortCar}>
+                Year
+              </button>
+              <button className="sort-button" name="make" onClick={handleSortCar}>
+                Make
+              </button>
+              <button className="sort-button" name="model" onClick={handleSortCar}>
+                Model
+              </button>
+            </th>
+            <th>
+              <button className="sort-button" name="registrationNumber" onClick={handleSortCar}>
+                2023 Registration
+              </button>
+            </th>
+            <th>Payment Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          {carInformation}
+        </tbody>
+      </table>
+    </div> : null
+
 
   allVotes ? showInformation = adminArrays?.votes?.map((vote) => {
     return (
-      <div key={vote.id}>
+      <div className="votes-table" key={vote.id}>
         <p>First Place: {vote.firstPlace}</p>
         <p>Second Place: {vote.secondPlace}</p>
         <p>Third Place: {vote.thirdPlace}</p>
       </div>
     )
   }) : null
-
+  
   return (
     <div className="admin-home-container">
       <h1>Admin Home</h1>
@@ -87,9 +154,7 @@ const AdminHome = (props) => {
             Votes
         </button>
       </div>
-      <div className="admin-cars-container">
       {showInformation}
-      </div>
     </div>
   )
 

@@ -1,3 +1,5 @@
+@import "./colors";
+
 .user-registration-button-container,
 .sign-in-button-container {
   display: flex;
@@ -54,4 +56,8 @@
 .paypal-item-description {
   padding-bottom: 1rem;
   font-weight: bolder;
+}
+
+.sort-button {
+  color: black;
 }
