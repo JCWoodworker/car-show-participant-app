@@ -4,24 +4,24 @@ class ShowRegistrationSeeder {
   static async seed() {
     const showRegistrationData = [
       {
-        registrationNumber: 1,
-        registeredCarId: 1,
-        paymentType: "online"
-      },
-      {
         registrationNumber: 2,
-        registeredCarId: 2,
-        paymentType: "online"
+        registeredCarId: 1,
+        paymentType: "Online"
       },
-      {
-        registrationNumber: 3,
-        registeredCarId: 3,
-        paymentType: "online"
-      },    
       {
         registrationNumber: 4,
+        registeredCarId: 2,
+        paymentType: "Online"
+      },
+      {
+        registrationNumber: 1,
+        registeredCarId: 3,
+        paymentType: "Online"
+      },    
+      {
+        registrationNumber: 3,
         registeredCarId: 4,
-        paymentType: "online"
+        paymentType: "Cash"
       }  
     ]
 
