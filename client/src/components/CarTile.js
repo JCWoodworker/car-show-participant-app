@@ -25,8 +25,8 @@ const CarTile = ({ car, deleteCar, registerCar }) => {
   car.registered ? (
     checkoutContainer = (
       <div className="already-registered-car">
-        <p>This car is registered for the show!</p> 
-        <p>Your registration number is {car.registered.registrationNumber}</p>
+        <p>Registered for 2023!</p> 
+        <p>Number: {car?.registered?.registrationNumber}</p>
       </div>
     )
   ) : (
@@ -50,9 +50,7 @@ const CarTile = ({ car, deleteCar, registerCar }) => {
 
   let yearMakeModel = (
       <>
-        <p>Year: {car.year}</p>
-        <p>Make: {car.make}</p>
-        <p>Model: {car.model}</p>
+        <p className="year-make-model">{car?.year} {car?.make} {car?.model}</p>
       </>
     )
 

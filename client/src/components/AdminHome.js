@@ -49,9 +49,10 @@ const AdminHome = (props) => {
   }
 
   allUsersAndCars ? showInformation = adminArrays?.carAndUserData?.map((data) => {
+    const key = (data.car.year * data.car.carId) + data.user.id
     return (
       <AdminShowCars
-        key={data.user.id}
+        key={key}
         user={data.user}
         car={data.car}
         registerCar={registerCar}

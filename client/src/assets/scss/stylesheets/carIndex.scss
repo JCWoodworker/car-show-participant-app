@@ -37,9 +37,16 @@
   color: white;
   padding: 1rem;
   font-size: 1.25rem;
+  max-width: 200px;
 }
 
 .car-info p {
   margin: 0.5px;
   padding: 0.5px;
 }
+
+.year-make-model {
+  display: flex;
+  flex-flow: row wrap;
+}
+

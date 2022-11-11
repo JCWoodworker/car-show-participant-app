@@ -15,7 +15,7 @@ const AdminShowCars = ({ user, car, registerCar }) => {
     </>
   )
   if (isCarRegistered) {
-    registrationInformation = <p>Registered For 2023 Show - Paid {car.paymentType}: #{car.registrationNumber}</p>
+    registrationInformation = <p className="reg-info">Registered For 2023 - $$ {car.paymentType}: #{car.registrationNumber}</p>
   }
 
   return (

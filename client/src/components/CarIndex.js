@@ -18,8 +18,7 @@ const CarIndex = (props) => {
   const addCar = async (carPayload) => {
     try {
       const response = await axios.post(`/api/v1/cars`, carPayload)
-      const newCar = response.data.car
-      setCarData([...carData, newCar])
+      setCarData([...carData, response.data.car])
     } catch(err) {
       console.log(err)
     }

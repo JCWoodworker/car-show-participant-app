@@ -52,6 +52,16 @@ const App = (props) => {
           <Route exact path="/user-sessions/new" component={SignInForm} />
         </div>
       </Switch>
+      <div>
+        <div className="sponsors">
+          <a href="https://www.rilocalwoodworks.com" target="_blank">
+            <img className="sponsor-logo" id="rilw-logo" src="https://i.imgur.com/2j5LqFQ.jpg" alt="RI Local Woodworks Logo" />
+          </a>
+          <a href="https://www.koszelalumber.com" target="_blank">
+            <img className="sponsor-logo" id="koszela-lumber-logo" src="https://i.imgur.com/is8n6BZ.png" alt="RI Local Woodworks Logo" />
+          </a>
+        </div>
+      </div>
     </Router>
   )
 }

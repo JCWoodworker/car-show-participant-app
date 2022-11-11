@@ -18,19 +18,15 @@ showRegistrationsRouter.get('/', async (req, res) => {
 })
 
 showRegistrationsRouter.post('/', async (req, res) => {
-  debugger
   const carId = parseInt(req.body.data.payload[0])
   const paymentType = req.body.data.payload[1]
-  debugger
   if (typeof(req.user) === 'undefined') {
     return res.status(401).json({ errors: 'Unauthorized.  Must be logged in to register a car' })
   } else {
     try {
       const getNextRegistrationNumber = await ShowRegistration.query().max('registrationNumber')
       const nextRegistrationNumber = getNextRegistrationNumber[0].max + 1
-      debugger
       const newShowRegistration = await ShowRegistration.query().insertAndFetch({ registeredCarId: carId, registrationNumber: nextRegistrationNumber, paymentType: paymentType })
-      debugger
       return res.status(201).json({ showRegistration: newShowRegistration })
     } catch (error) {
       return res.status(500).json({ errors: error })

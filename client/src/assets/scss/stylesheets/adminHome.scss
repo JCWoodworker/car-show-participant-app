@@ -48,5 +48,10 @@
   padding: 0.75rem;
   background-color: $dark-gray;
   border-radius: 5px;
-  min-width: 350px;
+  min-width: 250px;
+}
+
+.reg-info {
+  display: flex;
+  flex-flow: row wrap;
 }
