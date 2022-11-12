@@ -15,14 +15,14 @@ const SignInForm = () => {
     if (!email.match(emailRegexp)) {
       newErrors = {
         ...newErrors,
-        email: "is invalid",
+        email: "Invalid",
       };
     }
 
     if (password.trim() === "") {
       newErrors = {
         ...newErrors,
-        password: "is required",
+        password: "Required",
       };
     }
 
