@@ -34,7 +34,8 @@ class ShowRegistration extends uniqueFunc(Model) {
       properties: {
         registrationNumber: {type: "integer"},
         registeredCarId: {type: "integer"},
-        paymentType: {type: "string"}
+        paymentType: {type: "string"},
+        transactionId: {type: "string"}
       }
     }
 

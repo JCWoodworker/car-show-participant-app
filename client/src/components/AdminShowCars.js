@@ -4,7 +4,7 @@ const AdminShowCars = ({ user, car, registerCar }) => {
   const [isCarRegistered, setIsCarRegistered] = useState(car.isRegisteredFor2023)
 
   const payCashButton = (event) => {
-    registerCar([car.carId, "Cash"])
+    registerCar([car.carId, "Cash", "n/a"])
     setIsCarRegistered(true)
   }
 

@@ -6,22 +6,30 @@ class ShowRegistrationSeeder {
       {
         registrationNumber: 2,
         registeredCarId: 1,
-        paymentType: "Online"
+        paymentType: "Online",
+        transactionId: "01faketransaction01",
+        transactionTimestamp: "2021-11-12T19:34:49.000Z"
       },
       {
         registrationNumber: 4,
         registeredCarId: 2,
-        paymentType: "Online"
+        paymentType: "Online",
+        transactionId: "02faketransaction02",
+        transactionTimestamp: "2021-11-12T19:34:49.000Z"
       },
       {
         registrationNumber: 1,
         registeredCarId: 3,
-        paymentType: "Online"
+        paymentType: "Online",
+        transactionId: "03faketransaction03",
+        transactionTimestamp: "2021-11-12T19:34:49.000Z"
       },    
       {
         registrationNumber: 3,
         registeredCarId: 4,
-        paymentType: "Cash"
+        paymentType: "Cash",
+        transactionId: "04faketransaction04",
+        transactionTimestamp: "2021-11-12T19:34:49.000Z"
       }  
     ]
 
