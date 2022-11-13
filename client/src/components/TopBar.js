@@ -1,9 +1,9 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import SignOutButton from "../authentication/SignOutButton"
+import SignOutButton from "./authentication/SignOutButton"
 
 const TopBar = ({ user }) => {
-  const unauthenticatedListItems = [
+  const unauthenticatedListItems = [  
     <div className="authenticated-list-items">
       <Link to="/user-sessions/new">
         Sign In

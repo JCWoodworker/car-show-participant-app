@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import PayPal from "./PayPal"
+import PayPal from "../../PayPal"
 
 const CarTile = ({ car, deleteCar, registerCar }) => {
   const [checkout, setCheckout] = useState(false)
@@ -11,10 +11,17 @@ const CarTile = ({ car, deleteCar, registerCar }) => {
 
   let checkoutButton = null
   checkout ? checkoutButton = (
+    <div className="registration-options-container">
+      <button 
+        className="close-payment-options" 
+        onClick={() => setCheckout(!checkout)}>
+        Close Payment Options
+      </button>
       <PayPal 
         car={car} 
         registerCar={registerCar}
       />
+    </div>
   ) : checkoutButton = (
     <button className="purchase-registration" onClick={() => setCheckout(true)}>
       Purchase 2023 Registration for this car

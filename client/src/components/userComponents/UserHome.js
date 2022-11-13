@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react"
-import CarIndex from "./CarIndex"
-import { userContext } from "./App"
+import CarIndex from "./carComponents/CarIndex"
+import { userContext } from "../App"
 
 const UserHome = (props) => {
   const currentUser = useContext(userContext) ? useContext(userContext) : null

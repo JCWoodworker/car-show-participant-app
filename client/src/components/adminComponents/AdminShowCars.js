@@ -4,8 +4,13 @@ const AdminShowCars = ({ user, car, registerCar }) => {
   const [isCarRegistered, setIsCarRegistered] = useState(car.isRegisteredFor2023)
 
   const payCashButton = (event) => {
-    registerCar([car.carId, "Cash", "n/a"])
-    setIsCarRegistered(true)
+    const cashConfirmation = confirm(`Register this car as paid in cash?`)
+    if (!cashConfirmation) {
+      return false
+    } else {
+      registerCar([car.carId, "Cash", "n/a"])
+      setIsCarRegistered(true)
+    }
   }
 
   let registrationInformation = "Not Registered"
@@ -15,7 +20,12 @@ const AdminShowCars = ({ user, car, registerCar }) => {
 
   let paymentInfo = car?.paymentType
   if (!isCarRegistered) {
-    paymentInfo = <button onClick={payCashButton}>Pay Cash</button>
+    paymentInfo = (
+      <button 
+        className="pay-cash-button" 
+        onClick={payCashButton}>Pay Cash
+      </button>
+    )
   }
 
   return (

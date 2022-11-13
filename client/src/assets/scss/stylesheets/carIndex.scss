@@ -50,3 +50,9 @@
   flex-flow: row wrap;
 }
 
+.registration-options-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
