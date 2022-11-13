@@ -25,7 +25,7 @@ class ShowRegistrationSeeder {
         registrationNumber: 3,
         registeredCarId: 4,
         paymentType: "Cash",
-        transactionId: "04faketransaction04"
+        transactionId: "n/a"
       }  
     ]
 

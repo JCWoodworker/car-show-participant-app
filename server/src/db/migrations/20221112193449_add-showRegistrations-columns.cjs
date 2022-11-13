@@ -7,7 +7,7 @@
  */
 exports.up = async (knex) => {
   return knex.schema.table('showRegistrations', (table) => {
-    table.string('transactionId')
+    table.string('transactionId').notNullable().defaultTo('n/a')
   })
 }
 
