@@ -32,7 +32,7 @@ const PayPal = ({ car, registerCar }) => {
       onApprove: async (data, actions) => {
         const order = await actions.order.capture()
         setPaidFor(true)
-        registerCar([car.id, "Online"])
+        registerCar([car.id, "Online", order.id])
         console.log(order)
       },
       onError: err => {
