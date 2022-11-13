@@ -1,3 +1,5 @@
+@import "./colors";
+
 .admin-home-container {
   display: flex;
   flex-flow: column;
@@ -11,25 +13,6 @@
   flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
-}
-
-.admin-link {
-  padding: 1rem;
-  margin: 1rem;
-  background-color: $dark-gray;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.admin-link {
-  min-width: 150px;
-  color: white;
-  &:hover {
-    background-color: black;
-  }
-  &:active {
-    background-color: $maroon;
-    color: greenyellow;
-  }
 }
 
 .adminCarListTile {
@@ -63,11 +46,11 @@ table {
 }
 
 th {
-  border-bottom: 3px solid white;
+  border-bottom: 5px solid $medium-gray;
   padding: 0.5rem 0.3rem;
 }
 
 td{
-  border-bottom: 3px solid white;
+  border-bottom: 1px solid $medium-gray;
   padding: 0.5rem 0.3rem;
 }

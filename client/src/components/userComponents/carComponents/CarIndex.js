@@ -40,7 +40,7 @@ const CarIndex = (props) => {
       console.log(err)
     }
     } else {
-      alert("Cancelled deletion.")
+      return false
     }
   }
 

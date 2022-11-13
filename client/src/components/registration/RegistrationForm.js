@@ -1,6 +1,7 @@
 import React, { useState } from "react"
-import FormError from "../layout/FormError"
+import FormError from "../errorHandling/FormError"
 import config from "../../config"
+import { Link } from "react-router-dom"
 
 const RegistrationForm = () => {
   const [userPayload, setUserPayload] = useState({
@@ -177,6 +178,7 @@ const RegistrationForm = () => {
             type="submit" 
             className="user-registration-button" 
             value="Register" />
+          <Link to="/">Cancel/Go Back</Link>  
         </div>
       </form>
     </div>

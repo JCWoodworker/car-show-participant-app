@@ -1,15 +1,17 @@
 import React, { useState, useEffect, createContext } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { hot } from "react-hot-loader/root"
+import { Link } from "react-router-dom"
 
-import getCurrentUser from "../services/getCurrentUser"
 import "../assets/scss/main.scss"
+import getCurrentUser from "../services/getCurrentUser"
 import RegistrationForm from "./registration/RegistrationForm"
 import SignInForm from "./authentication/SignInForm"
-import TopBar from "./layout/TopBar"
 
-import UserHome from "./UserHome"
-import AdminHome from "./AdminHome"
+import TopBar from "./TopBar"
+import UserHome from "./userComponents/UserHome"
+import AdminHome from "./adminComponents/AdminHome"
+
 export const userContext = createContext()
 
 const App = (props) => {
@@ -31,15 +33,14 @@ const App = (props) => {
   if (currentUser) {
     currentUser.isAdmin ? userHomeDisplay = <AdminHome /> : userHomeDisplay = <UserHome />
   } else {
-    userHomeDisplay = <p>Please sign in or register</p>
+    userHomeDisplay = <p>Please <Link to="/user-sessions/new">SIGN IN</Link> or <Link to="/users/new">REGISTER</Link></p>
   }
-
 
   return (
     <Router>
       <TopBar user={currentUser} />
         <div className="main-title">
-          <h2>Car Show Participant App</h2>
+          <h2>2023 Michail P Stefanik Foundation Car Show</h2>
         </div>
       <Switch>
         <div className="main-page-container">
