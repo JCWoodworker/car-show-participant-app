@@ -32,7 +32,6 @@ const CarIndex = (props) => {
         console.log("Error deleting car")
       } else {
       const newCarData = carData?.filter(vehicle => vehicle.id !== car.id)
-      alert(`Your ${car.year} ${car.make} ${car.model} has been deleted.`)
       setCarData(newCarData)
       }
     }

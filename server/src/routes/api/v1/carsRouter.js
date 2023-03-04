@@ -28,14 +28,19 @@ const carsRouter = new express.Router()
 
   carsRouter.post('/', async (req, res) => {
     const { body } = req
-    try {
-      const newCar = await Car.query().insert(body).returning('*')
-      return res.status(201).json({ car: newCar })
-    } catch (error) {
-      if (error instanceof ValidationError) {
-        return res.status(422).json({ errors: error.data })
+    body.year = parseInt(body.year)
+    if (typeof req.user === 'undefined') {
+      return res.status(401).json({ errors: 'Unauthorized.  Must be logged in to register a car' })
+    } else {
+      try {
+        const newCar = await Car.query().insert(body).returning('*')
+        return res.status(201).json({ car: newCar })
+      } catch (error) {
+        if (error instanceof ValidationError) {
+          return res.status(422).json({ errors: error.data })
+        }
+        return res.status(500).json({ errors: error })
       }
-      return res.status(500).json({ errors: error })
     }
   })
 

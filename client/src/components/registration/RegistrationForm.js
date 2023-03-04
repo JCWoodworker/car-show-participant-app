@@ -25,46 +25,45 @@ const RegistrationForm = () => {
     if (!email.match(emailRegexp)) {
       newErrors = {
         ...newErrors,
-        email: "is invalid",
+        email: "Invalid",
       }
     }
 
     if (password.trim() == "") {
       newErrors = {
         ...newErrors,
-        password: "is required",
+        password: "Required",
       }
     }
 
     if (firstName.trim() == "") {
       newErrors = {
         ...newErrors,
-        firstName: "First name is required",
+        firstName: "Required",
       }
     }
     
     if ((cellPhone.trim() == "") || (cellPhone.length < 10) || (cellPhone.length > 10) || (!cellPhone.match(/^[0-9]{10}$/))) {
       newErrors = {
         ...newErrors,
-        cellPhone: "Cell Phone is required, must be 10 digits, no dashes",
+        cellPhone: "Required, must be 10 digits, no dashes",
       }
     }
   
     if (passwordConfirmation.trim() === "") {
       newErrors = {
         ...newErrors,
-        passwordConfirmation: "Password confirmation is required",
+        passwordConfirmation: "Required",
       }
 
     } else {
       if (passwordConfirmation !== password) {
         newErrors = {
           ...newErrors,
-          passwordConfirmation: "Confirmation does not match password",
+          passwordConfirmation: "Must match password",
         }
       }
     }
-
     setErrors(newErrors)
   }
 

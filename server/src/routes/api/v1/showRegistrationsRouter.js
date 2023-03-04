@@ -4,6 +4,9 @@ import ShowRegistrationSerializer from "../../../../serializers/ShowRegistration
 const showRegistrationsRouter = new express.Router()
 
 showRegistrationsRouter.get('/', async (req, res) => {
+  if (typeof req.user === 'undefined' || req.user.isAdmin !== true) {
+    return res.status(401).json({ errors: 'Unauthorized.  Must be logged in as admin to view/edit show registrations' })
+  }
   try {
     const showRegistrations = await ShowRegistration.query()
     const serializedShowRegistrations = await Promise.all(

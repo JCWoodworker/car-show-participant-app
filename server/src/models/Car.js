@@ -7,7 +7,7 @@ class Car extends Model {
   static get relationMappings() {
     const User = require("./User.js")
     const showRegistration = require("./ShowRegistration.js")
-
+    
     return {
       user: {
         relation: Model.BelongsToOneRelation,
@@ -35,15 +35,14 @@ class Car extends Model {
       type: "object",
       required: ["year", "make", "model", "userId"],
       properties: {
-        firstPlace: {type: "integer"},
-        secondPlace: {type: "string"},
-        thirdPlace: {type: "string"},
+        year: {type: ["integer"], minumum: 1896, maximum: 2024},
+        make: {type: "string"},
+        model: {type: "string"},
         userId: { type: ['integer', 'string'] },
       }
     }
 
   }
-
 }
 
 module.exports = Car
