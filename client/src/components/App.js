@@ -40,7 +40,7 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
         <div className="main-title">
-          <h2>2023 Michail P Stefanik Foundation Car Show</h2>
+          <h2>2023 Michael P Stefanik Foundation Car Show</h2>
         </div>
       <Switch>
         <div className="main-page-container">
